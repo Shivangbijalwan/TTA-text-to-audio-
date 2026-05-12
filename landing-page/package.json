@@ -2,12 +2,7 @@
   "name": "my-project",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
+ 
   "dependencies": {
     "lucide-react": "^1.14.0",
     "next": "^16.2.6",
