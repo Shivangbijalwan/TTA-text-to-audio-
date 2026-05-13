@@ -16,7 +16,7 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "₹299",
+    price: "₹399",
     popular: true,
     features: [
       "50,000 characters/month",
@@ -29,7 +29,7 @@ const plans = [
   },
   {
     name: "Business",
-    price: "₹459",
+    price: "₹959",
     popular: false,
     features: [
       "Unlimited characters",

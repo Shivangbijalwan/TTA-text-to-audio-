@@ -36,7 +36,7 @@ export default function AboutSection() {
 
           <p className="text-zinc-400 text-[22px] leading-[2.1rem] mt-10">
             Whether you are a podcaster, a content creator, a teacher, or a
-            developer building voice apps, TTA gives you{" "}
+            editor for his videos, TTA gives you{" "}
             <span className="text-white font-semibold">
               studio-level voice output
             </span>{" "}
