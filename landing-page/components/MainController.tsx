@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 // — Voice list —
 const voices = [
-  { id: "21m00Tcm4TlvDq8ikWAM", label: "Devik (Male)" },
+  { id: "21m00Tcm4TlvDq8ikWAM", label: "SAM" },
 ];
 
 // — CommentBox (inlined) —
