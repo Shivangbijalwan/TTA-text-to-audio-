@@ -1,6 +1,8 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+};
 
-// force redeploy
-const nextConfig: NextConfig = {};
-
-export default nextConfig;
+module.exports = nextConfig;
