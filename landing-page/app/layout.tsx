@@ -1,32 +1,24 @@
 import type { Metadata } from "next";
-import {
-  Geist,
-  Geist_Mono,
-  Titan_One,
-  Sour_Gummy,
-} from "next/font/google";
-
+import { Geist, Titan_One, Sour_Gummy } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 const titan = Titan_One({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-titan",
+  display: "swap",
 });
 
 const sour = Sour_Gummy({
   subsets: ["latin"],
   variable: "--font-sour",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -44,7 +36,6 @@ export default function RootLayout({
       lang="en"
       className={`
         ${geistSans.variable}
-        ${geistMono.variable}
         ${titan.variable}
         ${sour.variable}
         h-full antialiased

@@ -1,54 +1,44 @@
-import { NextRequest, NextResponse } from "next/server";
-import { execSync } from "child_process";
-import { readFileSync, unlinkSync, existsSync, writeFileSync } from "fs";
-import { join } from "path";
-import { tmpdir } from "os";
-import { randomUUID } from "crypto";
+export const runtime = "nodejs";
 
-export async function POST(req: NextRequest) {
-  const { text, voice = "en-US-JennyNeural" } = await req.json();
-
-  if (!text?.trim()) {
-    return NextResponse.json({ error: "No text provided" }, { status: 400 });
-  }
-
-  const outPath = join(tmpdir(), `${randomUUID()}.mp3`).replace(/\\/g, "/");
-  const scriptPath = join(tmpdir(), `${randomUUID()}.py`).replace(/\\/g, "/");
-
-  const scriptContent = `
-import asyncio
-import edge_tts
-
-async def main():
-    tts = edge_tts.Communicate(${JSON.stringify(text)}, ${JSON.stringify(voice)})
-    await tts.save(${JSON.stringify(outPath)})
-
-asyncio.run(main())
-`;
-
-  writeFileSync(scriptPath, scriptContent);
-
+export async function POST(req: Request) {
   try {
-    try {
-      execSync(`python3 "${scriptPath}"`, { timeout: 30000 });
-    } catch {
-      execSync(`python "${scriptPath}"`, { timeout: 30000 });
+    const { text, voice = "21m00Tcm4TlvDq8ikWAM" } = await req.json();
+
+    if (!text?.trim()) {
+      return Response.json({ error: "Text is required" }, { status: 400 });
     }
 
-    if (!existsSync(outPath)) throw new Error("Audio file was not created");
+    const res = await fetch(
+      `https://api.elevenlabs.io/v1/text-to-speech/${voice}`,
+      {
+        method: "POST",
+        headers: {
+          "xi-api-key": process.env.ELEVENLABS_API_KEY!,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text,
+          model_id: "eleven_monolingual_v1",
+          voice_settings: { stability: 0.5, similarity_boost: 0.5 },
+        }),
+      }
+    );
 
-    const buffer = readFileSync(outPath);
-    try { unlinkSync(outPath); } catch {}
-    try { unlinkSync(scriptPath); } catch {}
+    if (!res.ok) {
+      const err = await res.json();
+      return Response.json({ error: err.detail?.message ?? "TTS failed" }, { status: 500 });
+    }
 
-    return new NextResponse(buffer, {
-      headers: { "Content-Type": "audio/mpeg" },
+    const buffer = Buffer.from(await res.arrayBuffer());
+
+    return new Response(buffer, {
+      headers: {
+        "Content-Type": "audio/mpeg",
+        "Content-Disposition": 'attachment; filename="speech.mp3"',
+      },
     });
 
-  } catch (err: any) {
-    try { unlinkSync(scriptPath); } catch {}
-    try { unlinkSync(outPath); } catch {}
-    console.error("TTS Error:", err.message);
-    return NextResponse.json({ error: err.message }, { status: 500 });
+  } catch (e: any) {
+    return Response.json({ error: e.message ?? "TTS failed" }, { status: 500 });
   }
 }

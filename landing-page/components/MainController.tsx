@@ -4,24 +4,17 @@ import Image from "next/image";
 import { useState, useRef } from "react";
 
 const VOICES = [
-  // ── Female ──────────────────────────────
-  { id: "en-US-JennyNeural",       label: "Jenny",    gender: "Female", accent: "US",  mood: "Friendly" },
-  { id: "en-US-AriaNeural",        label: "Aria",     gender: "Female", accent: "US",  mood: "Cheerful" },
-  { id: "en-GB-SoniaNeural",       label: "Sonia",    gender: "Female", accent: "UK",  mood: "Calm" },
-  { id: "en-AU-NatashaNeural",     label: "Natasha",  gender: "Female", accent: "AU",  mood: "Neutral" },
-  // ── Male ────────────────────────────────
-  { id: "en-US-GuyNeural",         label: "Guy",      gender: "Male",   accent: "US",  mood: "Neutral" },
-  { id: "en-US-DavisNeural",       label: "Davis",    gender: "Male",   accent: "US",  mood: "Casual" },
-  { id: "en-GB-RyanNeural",        label: "Ryan",     gender: "Male",   accent: "UK",  mood: "Calm" },
-  { id: "en-AU-WilliamNeural",     label: "William",  gender: "Male",   accent: "AU",  mood: "Neutral" },
-  // ── Moods ───────────────────────────────
-  { id: "en-US-JennyNeural",       label: "Cheerful", gender: "Female", accent: "US",  mood: "Cheerful" },
-  { id: "en-US-GuyNeural",         label: "Angry",    gender: "Male",   accent: "US",  mood: "Angry" },
-  { id: "en-US-AriaNeural",        label: "Sad",      gender: "Female", accent: "US",  mood: "Sad" },
-  { id: "en-US-DavisNeural",       label: "Excited",  gender: "Male",   accent: "US",  mood: "Excited" },
+  { id: "21m00Tcm4TlvDq8ikWAM", label: "Rachel",  gender: "Female", accent: "US", mood: "Calm" },
+  { id: "AZnzlk1XvdvUeBnXmlld", label: "Domi",    gender: "Female", accent: "US", mood: "Confident" },
+  { id: "EXAVITQu4vr4xnSDxMaL", label: "Bella",   gender: "Female", accent: "US", mood: "Friendly" },
+  { id: "MF3mGyEYCl7XYWbV9V6O", label: "Elli",    gender: "Female", accent: "US", mood: "Cheerful" },
+  { id: "ErXwobaYiN019PkySvjV", label: "Antoni",  gender: "Male",   accent: "US", mood: "Calm" },
+  { id: "TxGEqnHWrfWFTfGW9XjX", label: "Josh",    gender: "Male",   accent: "US", mood: "Casual" },
+  { id: "VR6AewLTigWG4xSOukaG", label: "Arnold",  gender: "Male",   accent: "US", mood: "Confident" },
+  { id: "pNInz6obpgDQGcFmaJgB", label: "Adam",    gender: "Male",   accent: "US", mood: "Neutral" },
 ];
 
-const FILTERS = ["All", "Female", "Male", "US", "UK", "AU", "Cheerful", "Calm", "Sad", "Angry", "Excited", "Casual"];
+const FILTERS = ["All", "Female", "Male", "Calm", "Cheerful", "Friendly", "Confident", "Casual", "Neutral"];
 
 export default function MainController() {
   const [text, setText] = useState("");
@@ -59,7 +52,6 @@ export default function MainController() {
     ? VOICES
     : VOICES.filter(v => v.gender === filter || v.accent === filter || v.mood === filter);
 
-  // ── CONVERT ────────────────────────────────────────────────
   const handleConvert = async () => {
     if (!text.trim()) return;
 
@@ -114,7 +106,6 @@ export default function MainController() {
     }
   };
 
-  // ── PLAY / PAUSE ───────────────────────────────────────────
   const handlePlayPause = () => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -129,7 +120,6 @@ export default function MainController() {
     }
   };
 
-  // ── STOP ──────────────────────────────────────────────────
   const handleStop = () => {
     const audio = audioRef.current;
     if (audio) { audio.pause(); audio.currentTime = 0; }
@@ -138,7 +128,6 @@ export default function MainController() {
     stopTick();
   };
 
-  // ── SCRUB ─────────────────────────────────────────────────
   const handleScrub = (e: React.MouseEvent<HTMLDivElement>) => {
     const audio = audioRef.current;
     if (!audio || !duration) return;
@@ -148,7 +137,6 @@ export default function MainController() {
     setCurrentTime(pct * duration);
   };
 
-  // ── DOWNLOAD ──────────────────────────────────────────────
   const handleDownload = () => {
     const blob = blobRef.current;
     if (!blob) return;
@@ -186,7 +174,6 @@ export default function MainController() {
         {/* Voice selector */}
         <div className="w-full md:w-64 bg-zinc-900 rounded-3xl p-4 sm:p-6 flex flex-col gap-3">
 
-          {/* Filter tabs */}
           <p className="text-zinc-400 text-sm">Filter by:</p>
           <div className="flex flex-wrap gap-1.5">
             {FILTERS.map((f) => (
@@ -204,29 +191,25 @@ export default function MainController() {
             ))}
           </div>
 
-          {/* Voice list */}
           <div className="flex flex-col gap-1.5 max-h-48 overflow-y-auto pr-1">
             {filteredVoices.map((v) => (
               <button
                 key={v.id + v.label}
                 onClick={() => setSelectedVoice(v.id)}
                 className={`flex items-center justify-between px-3 py-2 rounded-xl text-sm transition-all ${
-                  selectedVoice === v.id && filter !== "All"
-                    ? "bg-white text-zinc-900"
-                    : selectedVoice === v.id
+                  selectedVoice === v.id
                     ? "bg-white text-zinc-900"
                     : "bg-zinc-800 text-zinc-300 hover:bg-zinc-700"
                 }`}
               >
                 <span className="font-medium">{v.label}</span>
-                <span className={`text-xs ${selectedVoice === v.id ? "text-zinc-500" : "text-zinc-500"}`}>
-                  {v.accent} · {v.gender === "Female" ? "♀" : "♂"}
+                <span className="text-xs text-zinc-500">
+                  {v.mood} · {v.gender === "Female" ? "♀" : "♂"}
                 </span>
               </button>
             ))}
           </div>
 
-          {/* Convert */}
           <button
             onClick={handleConvert}
             disabled={loading}
