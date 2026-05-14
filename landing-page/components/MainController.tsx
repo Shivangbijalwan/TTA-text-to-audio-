@@ -4,18 +4,14 @@ import Image from "next/image";
 import { useState, useRef } from "react";
 
 const VOICES = [
-  { id: "9BWtsMINqrJLrRacOk9x", label: "Aria",    gender: "Female", accent: "US", mood: "Friendly" },
-  { id: "CwhRBWXzGAHq8TQ4Fs17", label: "Roger",   gender: "Male",   accent: "US", mood: "Confident" },
-  { id: "EXAVITQu4vr4xnSDxMaL", label: "Sarah",   gender: "Female", accent: "US", mood: "Calm" },
-  { id: "FGY2WhTYpPnrIDTdsKH5", label: "Laura",   gender: "Female", accent: "US", mood: "Cheerful" },
-  { id: "IKne3meq5aSn9XLyUdCD", label: "Charlie", gender: "Male",   accent: "AU", mood: "Casual" },
-  { id: "JBFqnCBsd6RMkjVDRZzb", label: "George",  gender: "Male",   accent: "UK", mood: "Calm" },
-  { id: "N2lVS1w4EtoT3dr4eOWO", label: "Callum",  gender: "Male",   accent: "US", mood: "Neutral" },
-  { id: "SAz9YHcvj6GT2YYXdXww", label: "River",   gender: "Female", accent: "US", mood: "Neutral" },
-  { id: "TX3LPaxmHKxFdv7VOQHJ", label: "Liam",    gender: "Male",   accent: "US", mood: "Casual" },
-  { id: "XB0fDUnXU5powFXDhCwa", label: "Charlotte",gender: "Female", accent: "UK", mood: "Cheerful" },
-  { id: "Xb7hH8MSUJpSbSDYk0k2", label: "Alice",   gender: "Female", accent: "UK", mood: "Confident" },
-  { id: "pqHfZKP75CvOlQylNhV4", label: "Bill",    gender: "Male",   accent: "US", mood: "Friendly" },
+  { id: "en-US-JennyNeural",   label: "Jenny",   gender: "Female", accent: "US", mood: "Friendly" },
+  { id: "en-US-AriaNeural",    label: "Aria",    gender: "Female", accent: "US", mood: "Cheerful" },
+  { id: "en-GB-SoniaNeural",   label: "Sonia",   gender: "Female", accent: "UK", mood: "Calm" },
+  { id: "en-AU-NatashaNeural", label: "Natasha", gender: "Female", accent: "AU", mood: "Neutral" },
+  { id: "en-US-GuyNeural",     label: "Guy",     gender: "Male",   accent: "US", mood: "Neutral" },
+  { id: "en-US-DavisNeural",   label: "Davis",   gender: "Male",   accent: "US", mood: "Casual" },
+  { id: "en-GB-RyanNeural",    label: "Ryan",    gender: "Male",   accent: "UK", mood: "Calm" },
+  { id: "en-AU-WilliamNeural", label: "William", gender: "Male",   accent: "AU", mood: "Neutral" },
 ];
 
 const FILTERS = ["All", "Female", "Male", "Calm", "Cheerful", "Friendly", "Confident", "Casual", "Neutral"];
