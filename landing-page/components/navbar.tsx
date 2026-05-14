@@ -31,7 +31,7 @@ export default function Navbar() {
         {isSignedIn ? (
           <>
             <span className="text-sm text-white/60">
-              {user?.firstName ||
+              {user?.username ||
                 user?.emailAddresses?.[0]?.emailAddress}
             </span>
 
