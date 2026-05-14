@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
 import MainController from "@/components/MainController";
 import VoiceBars from "@/components/voiceBars";
 import AboutSection from "@/components/about";
@@ -11,17 +9,14 @@ import FAQSection from "@/components/FAQ";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 
-export default async function Home() {
-  const { userId } = await auth();
-  if (userId) redirect("/home");
-
+export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-black">
 
       <Navbar />
 
       {/* LANDING */}
-      <section className="bg-black flex items-center justify-center px-6 py-20 md:py-32">
+      <section id="home" className="bg-black flex items-center justify-center px-6 py-20 md:py-32">
         <div className="max-w-6xl w-full text-center">
 
           {/* Top Badge */}
@@ -104,19 +99,27 @@ export default async function Home() {
       </section>
 
       {/* ABOUT SECTION */}
-      <AboutSection />
+      <div id="about">
+        <AboutSection />
+      </div>
 
+<div id="features">
       {/* FEATURES SECTION */}
       <FeaturesSection />
-
+</div>
+<div id="how-it-works">
       {/* HOW IT WORKS */}
       <HowItWorks />
-
+</div>
       {/* PRICING */}
-      <PricingSection />
+      <div id="pricing">
+        <PricingSection />
+      </div>
 
       {/* FAQ */}
-      <FAQSection />
+      <div id="faq">
+        <FAQSection />
+      </div>
 
       {/* FOOTER */}
       <Footer />
