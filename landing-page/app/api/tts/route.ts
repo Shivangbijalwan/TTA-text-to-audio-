@@ -2,7 +2,7 @@ export const runtime = "nodejs";
 
 export async function POST(req: Request) {
   try {
-    const { text, voice = "21m00Tcm4TlvDq8ikWAM" } = await req.json();
+    const { text, voice = "9BWtsMINqrJLrRacOk9x" } = await req.json();
 
     if (!text?.trim()) {
       return Response.json({ error: "Text is required" }, { status: 400 });
