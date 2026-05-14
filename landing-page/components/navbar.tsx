@@ -32,13 +32,13 @@ export default function Navbar() {
         ) : (
           <>
             <button
-              onClick={() => openSignIn({ redirectUrl: "/home" })}
+              onClick={() => openSignIn({ afterSignInUrl: "/home" })}
               className="text-white border border-white/30 px-4 py-2 rounded-3xl hover:bg-orange-500 hover:border-orange-500 transition-all text-sm"
             >
               Login
             </button>
             <button
-              onClick={() => openSignUp({ redirectUrl: "/home" })}
+              onClick={() => openSignUp({ afterSignUpUrl: "/home" })}
               className="text-white border border-white/30 px-4 py-2 rounded-3xl hover:bg-orange-500 hover:border-orange-500 transition-all text-sm"
             >
               Signup
