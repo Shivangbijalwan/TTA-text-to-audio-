@@ -11,7 +11,7 @@ const features = [
   {
     icon: <Mic size={22} />,
     title: "Ultra-Realistic Voices",
-    desc: "Choose from 50+ AI voices — male, female, neutral — across multiple accents. Sound human, every time.",
+    desc: "Choose from 50+ AI voices — male, female, neutral ,tones — across multiple accents. Sound human, every time.",
   },
  
   {
@@ -27,7 +27,7 @@ const features = [
   {
     icon: <Download size={22} />,
     title: "Download & Share",
-    desc: "Export your audio as MP3 or WAV. Use it anywhere — social media, apps, presentations, or podcasts.",
+    desc: "Export your audio as MP3 . Use it anywhere — social media, apps, presentations, or podcasts.",
   },
  
 ];

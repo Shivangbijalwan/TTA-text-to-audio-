@@ -12,7 +12,8 @@ import Navbar from "@/components/navbar";
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-black">
-
+     
+     {/* NAVBAR */}
       <Navbar />
 
       {/* LANDING */}
@@ -58,22 +59,8 @@ export default function Home() {
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-            <a href="#">
-              <button
-                className="w-full sm:w-auto cursor-pointer px-8 py-4 rounded-2xl bg-[#d5753a] hover:scale-105 transition-all duration-300 text-black text-base sm:text-lg"
-                style={{ fontFamily: "var(--font-titan)" }}
-              >
-                Start Creating
-              </button>
-            </a>
-            <a href="#">
-              <button
-                className="w-full sm:w-auto cursor-pointer px-8 py-4 rounded-2xl border border-[#e6B394]/30 bg-white/5 hover:bg-white/10 transition-all duration-300 text-white text-base sm:text-lg"
-                style={{ fontFamily: "var(--font-sour)" }}
-              >
-                Free Test
-              </button>
-            </a>
+          
+    
           </div>
         </div>
       </section>
@@ -84,7 +71,7 @@ export default function Home() {
       </main>
 
       {/* FREE TESTING */}
-      <section className="px-4 sm:px-6 pb-12">
+      <section className="px-4 sm:px-6 pb-12" >
         <div className="bg-orange-300 rounded-3xl p-4 sm:p-6">
           <p
             className="text-orange-900 text-xs uppercase tracking-widest font-semibold mb-4"

@@ -8,38 +8,14 @@ const plans = [
     price: "₹0",
     popular: false,
     features: [
-      "10,000 characters/month",
-      "1 voice option",
+      "unlimited characters/month",
+      "multiple voice options",
+      "multiple tones options",
       "MP3 download",
-      "1 language",
+      "different languages",
     ],
   },
-  {
-    name: "Pro",
-    price: "$19",
-    popular: true,
-    features: [
-      "50,000 characters/month",
-      "20 voices",
-      "MP3 + WAV download",
-      "10 languages",
-      "Voice customization",
-      "Priority generation",
-    ],
-  },
-  {
-    name: "Business",
-    price: "$49",
-    popular: false,
-    features: [
-      "Unlimited characters",
-      "50+ voices",
-      "MP3 + WAV download",
-      "all languages",
-      "Full voice control",
-      "Priority support",
-    ],
-  },
+  
 ];
 
 export default function PricingSection() {
@@ -59,9 +35,9 @@ export default function PricingSection() {
 
         {/* Main Heading */}
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] max-w-5xl">
-          Start Free.
+          Free For You
           <span className="bg-gradient-to-r from-white via-orange-300 to-orange-500 bg-clip-text text-transparent">
-            {" "}Scale Anytime.
+            {" "}.
           </span>
         </h1>
 

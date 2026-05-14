@@ -22,17 +22,13 @@ const faqs = [
   {
     question: "What file formats can I download?",
     answer:
-      "You can export your generated audio in MP3 and WAV formats.",
+      "You can export your generated audio in MP3 formats.",
   },
+ 
   {
-    question: "Can I use TTA audio in commercial projects?",
+    question: "Does TTA support different languages?",
     answer:
-      "Yes. Paid plans include commercial usage rights for podcasts, YouTube, apps and business projects.",
-  },
-  {
-    question: "Does TTA support Hindi and Indian languages?",
-    answer:
-      "Yes. TTA supports Hindi along with several Indian and international languages.",
+      "Yes. TTA supports all national/international languages.",
   },
 ];
 

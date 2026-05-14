@@ -1,36 +1,54 @@
-export async function POST(req: Request) {
-  const { text, voice } = await req.json();
+import { NextRequest, NextResponse } from "next/server";
+import { execSync } from "child_process";
+import { readFileSync, unlinkSync, existsSync, writeFileSync } from "fs";
+import { join } from "path";
+import { tmpdir } from "os";
+import { randomUUID } from "crypto";
 
-  console.log("KEY:", process.env.ELEVENLABS_KEY);
-  console.log("VOICE:", voice);
-  console.log("TEXT:", text);
+export async function POST(req: NextRequest) {
+  const { text, voice = "en-US-JennyNeural" } = await req.json();
 
-  const res = await fetch(
-    `https://api.elevenlabs.io/v1/text-to-speech/${voice}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "xi-api-key": process.env.ELEVENLABS_KEY!,
-      },
-      body: JSON.stringify({
-        text,
-        model_id: "eleven_multilingual_v1",
-        voice_settings: { stability: 0.5, similarity_boost: 0.5 },
-      }),
-    }
-  );
-
-  console.log("ELEVENLABS STATUS:", res.status);
-
-  if (!res.ok) {
-    const error = await res.text();
-    console.error("ELEVENLABS ERROR:", error);
-    return new Response(error, { status: res.status });
+  if (!text?.trim()) {
+    return NextResponse.json({ error: "No text provided" }, { status: 400 });
   }
 
-  const audio = await res.arrayBuffer();
-  return new Response(audio, {
-    headers: { "Content-Type": "audio/mpeg" },
-  });
+  const outPath = join(tmpdir(), `${randomUUID()}.mp3`).replace(/\\/g, "/");
+  const scriptPath = join(tmpdir(), `${randomUUID()}.py`).replace(/\\/g, "/");
+
+  const scriptContent = `
+import asyncio
+import edge_tts
+
+async def main():
+    tts = edge_tts.Communicate(${JSON.stringify(text)}, ${JSON.stringify(voice)})
+    await tts.save(${JSON.stringify(outPath)})
+
+asyncio.run(main())
+`;
+
+  writeFileSync(scriptPath, scriptContent);
+
+  try {
+    try {
+      execSync(`python3 "${scriptPath}"`, { timeout: 30000 });
+    } catch {
+      execSync(`python "${scriptPath}"`, { timeout: 30000 });
+    }
+
+    if (!existsSync(outPath)) throw new Error("Audio file was not created");
+
+    const buffer = readFileSync(outPath);
+    try { unlinkSync(outPath); } catch {}
+    try { unlinkSync(scriptPath); } catch {}
+
+    return new NextResponse(buffer, {
+      headers: { "Content-Type": "audio/mpeg" },
+    });
+
+  } catch (err: any) {
+    try { unlinkSync(scriptPath); } catch {}
+    try { unlinkSync(outPath); } catch {}
+    console.error("TTS Error:", err.message);
+    return NextResponse.json({ error: err.message }, { status: 500 });
+  }
 }

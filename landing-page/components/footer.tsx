@@ -22,7 +22,9 @@ const Footer: React.FC = () => {
           <span className="hidden text-orange-200 sm:inline">•</span>
 
           <p className="text-sm text-orange-300">
-            © 2025 TTA. All rights reserved.
+           <a href="https://shivang-website.vercel.app/" className="text-orange-300 transition duration-300 hover:text-white">
+             Created by Shivang Bijalwan
+           </a>
           </p>
         </div>
 
@@ -47,7 +49,7 @@ const Footer: React.FC = () => {
           <span className="hidden text-orange-200 sm:inline">•</span>
 
           <a
-            href="/contact"
+            href="https://shivang-website.vercel.app/"
             className="text-orange-300 transition duration-300 hover:text-white"
           >
             Contact
@@ -55,12 +57,7 @@ const Footer: React.FC = () => {
 
           <span className="hidden text-orange-200 sm:inline">•</span>
 
-          <a
-            href="/api-docs"
-            className="text-orange-300 transition duration-300 hover:text-white"
-          >
-            API Docs
-          </a>
+        
         </div>
       </div>
     </footer>
