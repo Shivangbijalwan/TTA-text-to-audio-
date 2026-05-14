@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 import MainController from "@/components/MainController";
 import VoiceBars from "@/components/voiceBars";
 import AboutSection from "@/components/about";
@@ -7,20 +9,16 @@ import HowItWorks from "@/components/howwork";
 import PricingSection from "@/components/pricing";
 import FAQSection from "@/components/FAQ";
 import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
 
-export default function Home() {
+export default async function Home() {
+  const { userId } = await auth();
+  if (userId) redirect("/home");
+
   return (
-   
     <div className="min-h-screen flex flex-col bg-black">
 
-      {/* Navbar — sticky so it stays visible while scrolling */}
-      <nav className="sticky top-0 flex items-center justify-between z-50 bg-black/90 backdrop-blur-sm border-b border-white/10 px-5 py-4">
-        <img src="logo.png" alt="logo" className="h-10 w-10" />
-        <div className="flex items-center gap-2">
-          <a href="#" className="text-white border border-white/30 px-4 py-2 rounded-3xl hover:bg-orange-500 hover:border-orange-500 transition-all text-sm">Login</a>
-          <a href="#" className="text-white border border-white/30 px-4 py-2 rounded-3xl hover:bg-orange-500 hover:border-orange-500 transition-all text-sm">Signup</a>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* LANDING */}
       <section className="bg-black flex items-center justify-center px-6 py-20 md:py-32">
@@ -37,7 +35,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Main Heading — responsive sizes */}
+          {/* Main Heading */}
           <h1
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight text-white"
             style={{ fontFamily: "var(--font-titan)" }}
@@ -58,7 +56,7 @@ export default function Home() {
             className="mt-20 text-base sm:text-lg md:text-xl lg:text-2xl text-white/70 leading-relaxed max-w-3xl mx-auto"
             style={{ fontFamily: "var(--font-sour)" }}
           >
-           <span className="text-lg font-bold text-[#fa6000]">TTA</span> transforms your words into lifelike, professional-grade audio
+            <span className="text-lg font-bold text-[#fa6000]">TTA</span> transforms your words into lifelike, professional-grade audio
             using cutting-edge AI — perfect for creators, businesses, and
             editors.
           </p>
@@ -85,23 +83,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* VOICE BARS */}
+      <main className="bg-black mb-30 flex items-center justify-center">
+        <VoiceBars />
+      </main>
 
-    <main className="bg-black mb-30 flex items-center justify-center">
-      <VoiceBars />
-    </main>
-
-      {/* FREE TESTING —  */}
+      {/* FREE TESTING */}
       <section className="px-4 sm:px-6 pb-12">
         <div className="bg-orange-300 rounded-3xl p-4 sm:p-6">
-          {/* Optional section label */}
           <p
             className="text-orange-900 text-xs uppercase tracking-widest font-semibold mb-4"
             style={{ fontFamily: "var(--font-sour)" }}
           >
             Try it free
           </p>
-
-          {/* MainController*/}
           <div className="w-full">
             <MainController />
           </div>
