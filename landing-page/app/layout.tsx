@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ClerkProvider } from "@clerk/nextjs";
 import {
   Geist,
   Geist_Mono,
@@ -52,9 +51,7 @@ export default function RootLayout({
       `}
     >
       <body className="min-h-full flex flex-col">
-        <ClerkProvider>
-          {children}
-        </ClerkProvider> 
+        {children}
       </body>
     </html>
   );
