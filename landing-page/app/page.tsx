@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import MainController from "@/components/MainController";
 import Navbar from "@/components/navbar";
 
-const VoiceBars = dynamic(() => import("@/components/voiceBars"), { ssr: false });
+const VoiceBars = dynamic(() => import("@/components/voiceBars"));
 const AboutSection = dynamic(() => import("@/components/about"));
 const FeaturesSection = dynamic(() => import("@/components/features"));
 const HowItWorks = dynamic(() => import("@/components/howwork"));
