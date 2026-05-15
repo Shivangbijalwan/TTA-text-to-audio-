@@ -12,13 +12,17 @@ export const metadata: Metadata = {
     description: "TTA transforms your words into lifelike, professional-grade audio using cutting-edge AI — perfect for creators, businesses, and editors.",
     images: [
       {
-        url: "/api/og?title=TTA+AI-Powered+Audio+Generation",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "TTA - AI-Powered Audio Generation",
       },
     ],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og.png"],
   },
 };
 
