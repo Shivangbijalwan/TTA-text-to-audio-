@@ -13,7 +13,7 @@ export default function GetStartedButton({
     <div className="flex items-center justify-center w-full">
       <Link
         href={href}
-        className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border-2 border-orange-500 text-orange-500 text-sm font-semibold tracking-wide transition-all duration-300 hover:bg-orange-500 hover:text-white hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(249,115,22,0.35)] active:translate-y-0 active:shadow-none"
+        className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border-2 border-orange-500 text-orange-500 text-sm font-semibold tracking-wide transition-all duration-300 hover:bg-orange-500 hover:text-white hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(249,115,22,0.35)] active:translate-y-0 active:shadow-none mb-5"
       >
         {label}
         <svg
