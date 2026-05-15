@@ -43,20 +43,23 @@ export default function Home() {
         <VoiceBars />
       </main>
 
-      <section className="px-4 sm:px-6 pb-12">
-        <div className="bg-orange-300 rounded-3xl p-4 sm:p-6">
-          <p className="text-orange-900 text-xs uppercase tracking-widest font-semibold mb-4" style={{ fontFamily: "var(--font-sour)" }}>
-            Try it free
-          </p>
-        </div>
-      </section>
+ 
 
       <div id="about"><AboutSection /></div>
       <div id="features"><FeaturesSection /></div>
       <div id="how-it-works"><HowItWorks /></div>
-        <div className="w-full">
+
+           <section className="px-4 sm:px-6 pb-12">
+        <div className="bg-orange-300 rounded-3xl p-4 sm:p-6">
+          <p className="text-orange-900 text-xs uppercase tracking-widest font-semibold mb-4" style={{ fontFamily: "var(--font-sour)" }}>
+            Try it free
+          </p>
+          <div className="w-full">
             <MainController />
           </div>
+        </div>
+      </section>
+      
       <div id="pricing"><PricingSection /></div>
       <div id="faq"><FAQSection /></div>
       <Footer />
