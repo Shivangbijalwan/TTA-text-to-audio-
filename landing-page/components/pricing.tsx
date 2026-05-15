@@ -12,7 +12,7 @@ const plans = [
       "multiple voice options",
       "multiple tones options",
       "MP3 download",
-      "different languages",
+      "only English language",
     ],
   },
   
