@@ -6,7 +6,7 @@ export default function Navbar() {
 
       <img src="/logo.png" alt="logo" className="h-10 w-10" />
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 hidden sm:flex">
         <a
           href="#home"
           className="text-sm text-white/70 transition-all  hover:text-orange-400"
