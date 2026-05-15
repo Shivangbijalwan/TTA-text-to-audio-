@@ -10,26 +10,29 @@ export default function GetStartedButton({
   label = "Get started",
 }: GetStartedButtonProps) {
   return (
-    <Link
-      href={href}
-      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-orange-500 text-orange-500 text-sm font-medium transition-all duration-200 hover:bg-orange-500/10 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(249,115,22,0.25)] active:translate-y-0 active:shadow-none"
-    >
-      {label}
-      <svg
-        width="15"
-        height="15"
-        viewBox="0 0 15 15"
-        fill="none"
-        aria-hidden="true"
+    <div className="flex items-center justify-center w-full">
+      <Link
+        href={href}
+        className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border-2 border-orange-500 text-orange-500 text-sm font-semibold tracking-wide transition-all duration-300 hover:bg-orange-500 hover:text-white hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(249,115,22,0.35)] active:translate-y-0 active:shadow-none"
       >
-        <path
-          d="M2 7.5h11M9 3.5l4 4-4 4"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </Link>
+        {label}
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 15 15"
+          fill="none"
+          aria-hidden="true"
+          className="transition-transform duration-300 group-hover:translate-x-1"
+        >
+          <path
+            d="M2 7.5h11M9 3.5l4 4-4 4"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </Link>
+    </div>
   );
 }
