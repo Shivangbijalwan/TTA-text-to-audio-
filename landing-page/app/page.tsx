@@ -2,7 +2,7 @@
 import dynamic from "next/dynamic";
 import MainController from "@/components/MainController";
 import Navbar from "@/components/navbar";
-
+import GetStartedButton from "@/components/Getstartedbutton";
 const VoiceBars = dynamic(() => import("@/components/voiceBars"));
 const AboutSection = dynamic(() => import("@/components/about"));
 const FeaturesSection = dynamic(() => import("@/components/features"));
@@ -38,7 +38,7 @@ export default function Home() {
           </p>
         </div>
       </section>
-
+       <GetStartedButton href="#features" label="Get started" />
       <main className="bg-black mb-30 flex items-center justify-center">
         <VoiceBars />
       </main>
@@ -49,7 +49,7 @@ export default function Home() {
       <div id="features"><FeaturesSection /></div>
       <div id="how-it-works"><HowItWorks /></div>
 
-           <section className="px-4 sm:px-6 pb-12">
+           <section className="px-4 sm:px-6 pb-12" id="features">
         <div className="bg-orange-300 rounded-3xl p-4 sm:p-6">
           <p className="text-orange-900 text-xs uppercase tracking-widest font-semibold mb-4" style={{ fontFamily: "var(--font-sour)" }}>
             Try it free
@@ -59,7 +59,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
+
       <div id="pricing"><PricingSection /></div>
       <div id="faq"><FAQSection /></div>
       <Footer />
