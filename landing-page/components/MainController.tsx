@@ -14,7 +14,7 @@ const VOICES = [
   { id: "en-AU-WilliamNeural", label: "William", gender: "Male",   accent: "AU", mood: "Neutral" },
 ];
 
-const FILTERS = ["All", "Female", "Male", "Calm", "Cheerful", "Friendly", "Confident", "Casual", "Neutral"];
+const FILTERS = ["All", "Female", "Male", "Calm", "Cheerful", "Friendly", "Neutral"];
 
 export default function MainController() {
   const [text, setText] = useState("");

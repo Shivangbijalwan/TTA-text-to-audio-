@@ -38,28 +38,29 @@ export default function Home() {
           </p>
         </div>
       </section>
-       <GetStartedButton href="#model" label="Get started" />
+
+      <GetStartedButton href="#model" label="Get started" />
       <main className="bg-black mb-30 flex items-center justify-center">
         <VoiceBars />
       </main>
 
- 
+
 
       <div id="about"><AboutSection /></div>
       <div id="features"><FeaturesSection /></div>
       <div id="how-it-works"><HowItWorks /></div>
-        <section id="model">
-          <br></br>
-           <section className="px-4 sm:px-6 mt-2 pb-12">
-        <div className="bg-orange-300 rounded-3xl p-4 sm:p-6">
-          <p className="text-orange-900 text-xs uppercase tracking-widest font-semibold mb-4" style={{ fontFamily: "var(--font-sour)" }}>
-            Try it free
-          </p>
-          <div className="w-full">
-            <MainController />
+      <section id="model">
+        <br></br>
+        <section className="px-4 sm:px-6 mt-2 pb-12">
+          <div className="bg-orange-300 rounded-3xl p-4 sm:p-6">
+            <p className="text-orange-900 text-xs uppercase tracking-widest font-semibold mb-4" style={{ fontFamily: "var(--font-sour)" }}>
+              Try it free
+            </p>
+            <div className="w-full">
+              <MainController />
+            </div>
           </div>
-        </div>
-      </section></section>
+        </section></section>
 
       <div id="pricing"><PricingSection /></div>
       <div id="faq"><FAQSection /></div>
