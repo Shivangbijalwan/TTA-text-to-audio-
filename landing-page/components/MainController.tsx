@@ -4,14 +4,21 @@ import Image from "next/image";
 import { useState, useRef } from "react";
 
 const VOICES = [
-  { id: "en-US-JennyNeural",   label: "Jenny",   gender: "Female", accent: "US", mood: "Friendly" },
-  { id: "en-US-AriaNeural",    label: "Aria",    gender: "Female", accent: "US", mood: "Cheerful" },
-  { id: "en-GB-SoniaNeural",   label: "Sonia",   gender: "Female", accent: "UK", mood: "Calm" },
+  { id: "en-US-JennyNeural", label: "Jenny", gender: "Female", accent: "US", mood: "Friendly" },
+  { id: "en-US-AriaNeural", label: "Aria", gender: "Female", accent: "US", mood: "Cheerful" },
+  { id: "en-GB-SoniaNeural", label: "Sonia", gender: "Female", accent: "UK", mood: "Calm" },
   { id: "en-AU-NatashaNeural", label: "Natasha", gender: "Female", accent: "AU", mood: "Neutral" },
-  { id: "en-US-GuyNeural",     label: "Guy",     gender: "Male",   accent: "US", mood: "Neutral" },
-  { id: "en-US-DavisNeural",   label: "Davis",   gender: "Male",   accent: "US", mood: "Casual" },
-  { id: "en-GB-RyanNeural",    label: "Ryan",    gender: "Male",   accent: "UK", mood: "Calm" },
-  { id: "en-AU-WilliamNeural", label: "William", gender: "Male",   accent: "AU", mood: "Neutral" },
+  { id: "en-US-GuyNeural", label: "Guy", gender: "Male", accent: "US", mood: "Neutral" },
+  { id: "en-US-DavisNeural", label: "Davis", gender: "Male", accent: "US", mood: "Casual" },
+  { id: "en-GB-RyanNeural", label: "Ryan", gender: "Male", accent: "UK", mood: "Calm" },
+  { id: "en-AU-WilliamNeural", label: "William", gender: "Male", accent: "AU", mood: "Neutral" },
+  // Hindi (hi-IN) voices — all are standard Neural voices (available on Azure free tier)
+ // { id: "hi-IN-SwaraNeural", label: "Swara", gender: "Female", accent: "IN", mood: "Cheerful" },
+ // { id: "hi-IN-AaravNeural", label: "Aarav", gender: "Male", accent: "IN", mood: "Neutral" },
+ // { id: "hi-IN-AnanyaNeural", label: "Ananya", gender: "Female", accent: "IN", mood: "Friendly" },
+ // { id: "hi-IN-KavyaNeural", label: "Kavya", gender: "Female", accent: "IN", mood: "Calm" },
+ // { id: "hi-IN-KunalNeural", label: "Kunal", gender: "Male", accent: "IN", mood: "Calm" },
+ // { id: "hi-IN-RehaanNeural", label: "Rehaan", gender: "Male", accent: "IN", mood: "Casual" },
 ];
 
 const FILTERS = ["All", "Female", "Male", "Calm", "Cheerful", "Friendly", "Neutral"];
@@ -180,11 +187,10 @@ export default function MainController() {
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
-                  filter === f
+                className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${filter === f
                     ? "bg-orange-400 text-zinc-900"
                     : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
-                }`}
+                  }`}
               >
                 {f}
               </button>
@@ -196,11 +202,10 @@ export default function MainController() {
               <button
                 key={v.id + v.label}
                 onClick={() => setSelectedVoice(v.id)}
-                className={`flex items-center justify-between px-3 py-2 rounded-xl text-sm transition-all ${
-                  selectedVoice === v.id
+                className={`flex items-center justify-between px-3 py-2 rounded-xl text-sm transition-all ${selectedVoice === v.id
                     ? "bg-white text-zinc-900"
                     : "bg-zinc-800 text-zinc-300 hover:bg-zinc-700"
-                }`}
+                  }`}
               >
                 <span className="font-medium">{v.label}</span>
                 <span className="text-xs text-zinc-500">
