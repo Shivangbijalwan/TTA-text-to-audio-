@@ -50,7 +50,7 @@ export default function Home() {
       <div id="how-it-works"><HowItWorks /></div>
         <section id="model">
           <br></br>
-           <section className="px-4 sm:px-6 pb-12">
+           <section className="px-4 sm:px-6 mt-2 pb-12">
         <div className="bg-orange-300 rounded-3xl p-4 sm:p-6">
           <p className="text-orange-900 text-xs uppercase tracking-widest font-semibold mb-4" style={{ fontFamily: "var(--font-sour)" }}>
             Try it free
