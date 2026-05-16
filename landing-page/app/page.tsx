@@ -48,8 +48,8 @@ export default function Home() {
       <div id="about"><AboutSection /></div>
       <div id="features"><FeaturesSection /></div>
       <div id="how-it-works"><HowItWorks /></div>
-
-           <section className="px-4 sm:px-6 pb-12" id="model">
+        <section id="model">
+           <section className="px-4 sm:px-6 pb-12">
         <div className="bg-orange-300 rounded-3xl p-4 sm:p-6">
           <p className="text-orange-900 text-xs uppercase tracking-widest font-semibold mb-4" style={{ fontFamily: "var(--font-sour)" }}>
             Try it free
@@ -58,7 +58,7 @@ export default function Home() {
             <MainController />
           </div>
         </div>
-      </section>
+      </section></section>
 
       <div id="pricing"><PricingSection /></div>
       <div id="faq"><FAQSection /></div>
