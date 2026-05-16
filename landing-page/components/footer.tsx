@@ -22,9 +22,9 @@ const Footer: React.FC = () => {
           <span className="hidden text-orange-200 sm:inline">•</span>
 
           <p className="text-sm text-orange-300">
-           <a href="https://shivang-website.vercel.app/" className="text-orange-300 transition duration-300 hover:text-white">
-             Created by Shivang Bijalwan
-           </a>
+            <a href="https://shivang-website.vercel.app/" className="text-orange-300 transition duration-300 hover:text-white">
+              Created by Shivang Bijalwan
+            </a>
           </p>
         </div>
 
@@ -54,11 +54,8 @@ const Footer: React.FC = () => {
           >
             Contact
           </a>
-
-          <span className="hidden text-orange-200 sm:inline">•</span>
-
-        
         </div>
+
       </div>
     </footer>
   );
