@@ -3,67 +3,23 @@
 import Image from "next/image";
 import { useState, useRef } from "react";
 
-const VOICES = [
-  // ── English ──────────────────────────────────────────────────────────
-  { id: "en-US-JennyNeural",    label: "Jenny",    gender: "Female", accent: "US",  mood: "Friendly"  },
-  { id: "en-US-AriaNeural",     label: "Aria",     gender: "Female", accent: "US",  mood: "Cheerful"  },
-  { id: "en-US-GuyNeural",      label: "Guy",      gender: "Male",   accent: "US",  mood: "Neutral"   },
-  { id: "en-US-DavisNeural",    label: "Davis",    gender: "Male",   accent: "US",  mood: "Casual"    },
-  { id: "en-GB-SoniaNeural",    label: "Sonia",    gender: "Female", accent: "UK",  mood: "Calm"      },
-  { id: "en-GB-RyanNeural",     label: "Ryan",     gender: "Male",   accent: "UK",  mood: "Calm"      },
-  { id: "en-AU-NatashaNeural",  label: "Natasha",  gender: "Female", accent: "AU",  mood: "Neutral"   },
-  { id: "en-AU-WilliamNeural",  label: "William",  gender: "Male",   accent: "AU",  mood: "Neutral"   },
-  { id: "en-IN-NeerjaNeural",   label: "Neerja",   gender: "Female", accent: "IN",  mood: "Friendly"  },
-  { id: "en-IN-PrabhatNeural",  label: "Prabhat",  gender: "Male",   accent: "IN",  mood: "Neutral"   },
 
-  // ── Hindi ─────────────────────────────────────────────────────────────
-  { id: "hi-IN-SwaraNeural",    label: "Swara",    gender: "Female", accent: "IN",  mood: "Cheerful"  },
-  { id: "hi-IN-AaravNeural",    label: "Aarav",    gender: "Male",   accent: "IN",  mood: "Neutral"   },
-  { id: "hi-IN-AnanyaNeural",   label: "Ananya",   gender: "Female", accent: "IN",  mood: "Friendly"  },
-  { id: "hi-IN-KavyaNeural",    label: "Kavya",    gender: "Female", accent: "IN",  mood: "Calm"      },
-  { id: "hi-IN-KunalNeural",    label: "Kunal",    gender: "Male",   accent: "IN",  mood: "Calm"      },
-  { id: "hi-IN-RehaanNeural",   label: "Rehaan",   gender: "Male",   accent: "IN",  mood: "Casual"    },
+const FILTERS = ["All", "Female", "Male", "Calm", "Cheerful", "Friendly", "Neutral", "Casual"];
 
-  // ── Spanish ───────────────────────────────────────────────────────────
-  { id: "es-ES-ElviraNeural",   label: "Elvira",   gender: "Female", accent: "ES",  mood: "Friendly"  },
-  { id: "es-ES-AlvaroNeural",   label: "Alvaro",   gender: "Male",   accent: "ES",  mood: "Neutral"   },
-  { id: "es-MX-DaliaNeural",    label: "Dalia",    gender: "Female", accent: "MX",  mood: "Cheerful"  },
-  { id: "es-MX-JorgeNeural",    label: "Jorge",    gender: "Male",   accent: "MX",  mood: "Neutral"   },
-
-  // ── French ────────────────────────────────────────────────────────────
-  { id: "fr-FR-DeniseNeural",   label: "Denise",   gender: "Female", accent: "FR",  mood: "Calm"      },
-  { id: "fr-FR-HenriNeural",    label: "Henri",    gender: "Male",   accent: "FR",  mood: "Neutral"   },
-
-  // ── German ────────────────────────────────────────────────────────────
-  { id: "de-DE-KatjaNeural",    label: "Katja",    gender: "Female", accent: "DE",  mood: "Neutral"   },
-  { id: "de-DE-ConradNeural",   label: "Conrad",   gender: "Male",   accent: "DE",  mood: "Neutral"   },
-
-  // ── Japanese ──────────────────────────────────────────────────────────
-  { id: "ja-JP-NanamiNeural",   label: "Nanami",   gender: "Female", accent: "JP",  mood: "Friendly"  },
-  { id: "ja-JP-KeitaNeural",    label: "Keita",    gender: "Male",   accent: "JP",  mood: "Neutral"   },
-
-  // ── Chinese ───────────────────────────────────────────────────────────
-  { id: "zh-CN-XiaoxiaoNeural", label: "Xiaoxiao", gender: "Female", accent: "CN",  mood: "Cheerful"  },
-  { id: "zh-CN-YunxiNeural",    label: "Yunxi",    gender: "Male",   accent: "CN",  mood: "Cheerful"  },
-
-  // ── Arabic ────────────────────────────────────────────────────────────
-  { id: "ar-SA-ZariyahNeural",  label: "Zariyah",  gender: "Female", accent: "SA",  mood: "Calm"      },
-  { id: "ar-SA-HamedNeural",    label: "Hamed",    gender: "Male",   accent: "SA",  mood: "Neutral"   },
-
-  // ── Portuguese ────────────────────────────────────────────────────────
-  { id: "pt-BR-FranciscaNeural",label: "Francisca",gender: "Female", accent: "BR",  mood: "Friendly"  },
-  { id: "pt-BR-AntonioNeural",  label: "Antonio",  gender: "Male",   accent: "BR",  mood: "Neutral"   },
-
-  // ── Korean ────────────────────────────────────────────────────────────
-  { id: "ko-KR-SunHiNeural",    label: "SunHi",    gender: "Female", accent: "KR",  mood: "Friendly"  },
-  { id: "ko-KR-InJoonNeural",   label: "InJoon",   gender: "Male",   accent: "KR",  mood: "Neutral"   },
-
-  // ── Italian ───────────────────────────────────────────────────────────
-  { id: "it-IT-ElsaNeural",     label: "Elsa",     gender: "Female", accent: "IT",  mood: "Friendly"  },
-  { id: "it-IT-DiegoNeural",    label: "Diego",    gender: "Male",   accent: "IT",  mood: "Neutral"   },
+const LANGUAGE_FILTERS = [
+  { id: "All",  label: "🌐 All"       },
+  { id: "EN",   label: "🇺🇸 English"  },
+  { id: "HI",   label: "🇮🇳 Hindi"    },
+  { id: "ES",   label: "🇪🇸 Spanish"  },
+  { id: "FR",   label: "🇫🇷 French"   },
+  { id: "DE",   label: "🇩🇪 German"   },
+  { id: "JA",   label: "🇯🇵 Japanese" },
+  { id: "ZH",   label: "🇨🇳 Chinese"  },
+  { id: "AR",   label: "🇸🇦 Arabic"   },
+  { id: "PT",   label: "🇧🇷 Portuguese"},
+  { id: "KO",   label: "🇰🇷 Korean"   },
+  { id: "IT",   label: "🇮🇹 Italian"  },
 ];
-
-const FILTERS = ["All", "Female", "Male", "Calm", "Cheerful", "Friendly", "Neutral"];
 
 export default function MainController() {
   const [text, setText] = useState("");
