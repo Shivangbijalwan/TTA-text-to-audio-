@@ -8,7 +8,7 @@ const plans = [
     price: "₹0",
     popular: false,
     features: [
-      "unlimited characters/month",
+      "5000 characters/month and 1000 characters/script",
       "multiple voice options",
       "multiple tones options",
       "MP3 download",
