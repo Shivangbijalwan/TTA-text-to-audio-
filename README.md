@@ -57,9 +57,11 @@ Users simply paste their text, select a voice, and download their audio file —
 
 ## 3. Key Features
 
-### 🎙 Ultra-Realistic Voices
-- 50+ AI voices across male, female, and neutral tones
-- Multiple accents and languages supported
+### 🎙 Ultra-Realistic Voices 
+- unlimited characters/month
+- multiple voice options
+- only English language
+- multiple tones options like male, female, and neutral tones
 - Sounds human — every time
 
 ### ⚡ Instant Generation
