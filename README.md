@@ -70,7 +70,7 @@ Users simply paste their text, select a voice, and download their audio file —
 - Works even for long documents
 
 ### 🎛 Voice Customization
-- Control **speed**, **pitch**, **pauses**, and **tone**
+- Control **pitch** and **tone**
 - Fine-tune the output to match your brand or content style
 
 ### 📥 Download & Share
@@ -79,10 +79,10 @@ Users simply paste their text, select a voice, and download their audio file —
 
 ### 🔴 Live Preview
 - Real-time audio preview before downloading
-- Powered by TTA's custom-built engine trained on thousands of hours of voice data
+- Powered by Freetts API
 
-### 🌍 Multi-Language Support
-- Supports all major national and international languages
+### 🌍 Language Support
+- Supports English languages
 
 ---
 
@@ -91,9 +91,9 @@ Users simply paste their text, select a voice, and download their audio file —
 | Layer | Technology |
 |---|---|
 | **Frontend** | Next.js (App Router), TypeScript, React |
-| **Styling** | CSS Modules / globals.css |
+| **Styling** | CSS Modules / Tailwind / globals.css |
 | **Backend / API** | Node.js via Next.js API Routes |
-| **TTS Engine** | AI-powered TTS via `/api/tts` route |
+| **TTS Engine** | freetts api `/api/tts` route |
 | **Deployment** | Vercel |
 | **Package Manager** | npm |
 
@@ -195,7 +195,7 @@ TTA is currently **completely free** to use.
 
 | Plan | Price | Includes |
 |---|---|---|
-| **Free** | ₹0 / month | Unlimited characters, multiple voices & tones, MP3 download, multiple languages |
+| **Free** | ₹0 / month | 5000 characters, multiple voices & tones, MP3 download, english languages |
 
 > No credit card required. No sign-up needed.
 
