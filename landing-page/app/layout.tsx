@@ -3,10 +3,14 @@ import { Geist, Titan_One, Sour_Gummy } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "TTA - AI-Powered Audio Generation",
   description: "TTA transforms your words into lifelike, professional-grade audio using cutting-edge AI — perfect for creators, businesses, and editors.",
+  other: {
+    "google-adsense-account": "ca-pub-8322282514388205",
+  },
   openGraph: {
     title: "TTA - AI-Powered Audio Generation",
     description: "TTA transforms your words into lifelike, professional-grade audio using cutting-edge AI — perfect for creators, businesses, and editors.",
@@ -64,6 +68,11 @@ export default function RootLayout({
         {children}
         <Analytics />
         <SpeedInsights />
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8322282514388205"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
