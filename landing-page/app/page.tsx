@@ -11,6 +11,7 @@ const PricingSection = dynamic(() => import("@/components/pricing"));
 const FAQSection = dynamic(() => import("@/components/FAQ"));
 const Footer = dynamic(() => import("@/components/footer"));
 
+
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-black">
